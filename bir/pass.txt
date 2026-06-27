@@ -1,0 +1,360 @@
+DB: webfocus_client_pmc_hs
+DB-user: webfocus_pmc_hs_admin
+DB-pword: Z,hB9QOKv@x9
+
+
+CMS PROD
+https://wsiprodserver.wsiph2.com:2087
+https://192.155.86.62:2087/
+User: jatano
+Password: cp!Ds=t6n0!yX@d3v
+
+https://67.198.130.57:2087
+
+
+user: root
+
+password: su!paYuk6cheju3
+cd ../home/lydiaslech0n/beta.lydias-lechon.com
+
+username: wsiphproduction
+
+password: bdd3v3l0pm3n72015
+
+https://wsicpanel.wsiph2.com:2087/
+username: jtano
+
+Password: cp!J=T6n0yX@d6v
+
+https://wsicpanel.wsiph2.com:2083
+domain: wsicms.webfocus.ph
+UserName: wsicmswebfocus
+PassWord: Ws1cmsp6ss!**2021
+
+
+
+tano.jundrie@webfocus.ph
+3xB)$+L4}1Sy
+
+
+
+
+                                MMYY  CVV
+AMEX       3714 4963 531 1004   0521  1234
+MASTERCARD 5123 4567 8901 2346  0521  123
+VISA       4987 6543 2109 8769  0521  123
+JCB        3528 1234 5678 9012  0521  123
+
+
+Cent Value
+.00 0 Approved   -- GR001 
+.10 1 transaction could not be processed  -- GR003
+.01 E transaction declined - contact issuing bank  --GR094
+.05 2 transaction declined - contact issuing bank  -- GR003
+.68 3 No reply from processing Host  -- GR043
+.54 4 Card has expired  -- GR005
+.51 5 Insufficient Credit  -- GR039
+
+
+
+Dashboard url: https://testpti.payserv.net/paygatev2/default.aspx
+
+Username: SYSU_TEST
+Password: wU8tayEs
+
+
+Merchant ID: 00000012052012620B0B
+Merchant Name: SYSU International, Inc_MIGS_PHP
+Company Name: SYSU International, Inc 
+Merchant Key: 050A11C3E5C9E1A41055E907B21E56FF
+
+Endpoint url: https://testpti.payserv.net/webpayment/Default.aspx
+
+
+
+
+
+cge maam permission error kase yan, pag di parin nag okay pwede nio gamitin eto root access ng server
+https://67.198.130.57:2087
+user: root
+password: su!paYuk6cheju3
+
+
+FTP access
+username: warren@freelance.webfocus.ph
+host: freelance.webfocus.ph
+password: ]fYZM+3O_$vw
+
+
+https://wsicpanel.wsiph2.com:2083
+freelance.webfocus.ph
+username: freelancewsi
+password: cp!cmsfr33l6nc3!
+
+
+
+
+Eto po sir yun new credentails ni sysu
+https://172.104.45.240:2087/
+root
+mkf5!cN=3ZSp
+cd ../home/sysuinccom/sysuinc.com.ph
+wsi.munda.kristine@gmail.com
+password
+
+
+
+
+st pauls (ryan) - Aug 3
+                phase 1 = 30 days
+                phase 2 = 10 days
+mckornick (jorgie) - Aug 3
+                phase 1 = 40 days
+                phase 2 = 20 days
+mikisansoap - Martin 
+sysu updates - warren (until weekend) 
+sysu phase2 
+SMCQC - CMS4
+                - waiting for approval
+
+mlsvr03\administrator
+password: qEEwU~u3
+
+
+
+https://wsicpanel.wsiph2.com:2083
+domain: pmccms.webfocus.ph
+username: pmccms
+Password: cp6n3l!cmspmc
+
+0283083578
+
+
+Paymaya:Lydias
+https://manager-sandbox.paymaya.com/
+https://manager.paymaya.com/
+wsi.munda.kristine@gmail.com
+W3bF0cus
+
+http://172.16.20.56:6066/DataSnap/REST/TServerMethods1/getClassicData//001/GetMKPlant
+
+http://172.16.20.56:6066/DataSnap/REST/TServerMethods1/getClassicData//001/GetJCCodes
+
+http://172.16.20.56:6066/DataSnap/REST/TServerMethods1/getClassicData//001/GetInmaster
+
+http://172.16.20.56:6066/DataSnap/REST/TServerMethods1/getClassicData//001/GetAPVendors
+
+http://172.16.20.56:6066/DataSnap/REST/TServerMethods1/getClassicData//001/GetReq
+
+http://172.16.20.56:6066/DataSnap/REST/TServerMethods1/getClassicData//001/GetJPRDesc
+
+
+
+
+https://accounts.zoho.com/signin?servicename=ZohoCRM&signupurl=https://www.zoho.com/crm/signup.html?plan=enterprise
+Username: admin@webfocus.ph
+Password: WS1_Z0h02019!!*
+
+
+Legande Server
+https://legandecom.wsiph2.com:2087/
+root
+ws!8kl=!vxy
+
+WHM
+https://172.104.41.182:2087 
+or 
+https://lydias-lechoncom.wsiph2.com:2087/
+root
+qztGZ=K9!wEt
+
+
+
+
+TO YOUR ACCOUNT ACCESS:
+
+SSH credentials:
+USERNAME: clientadmin
+PASSWORD: cl!mV2qD=ksQtb
+WHM
+LINK: https://110.34.191.66:2087/
+USERNAME: root
+PASSWORD:  WkpX!y3T=bgEVw
+
+ 
+
+CPANEL
+https://cenphilsagacom.wsiph2.com:2083/
+User: covidformphilsag
+Pass: cp!#uA?ZVi+3ozL
+
+Database
+IP: 110.34.191.78
+Instance: WINPMCSVR
+DB name: covidform
+Username: covidformdb
+
+Password: hwlDY=wix+T3
+
+cpanel
+https://cenphilsagacom.wsiph2.com:2087/
+User: jatano
+pass: %$#@!asdf
+pass: GlnQAX2=)'l1
+%$#@!asdf
+
+
+     a. WAVECELL Account	 	
+https://app.wavecell.com/login
+munda.kristine@webfocus.ph
+QrV]63:+k
+     b. Zoom	 	Credentials
+username: admin@webfocus.ph
+Password: WS1z00m!**p6ss
+
+vendor.philsaga.com
+db user: v3ndorph_db_admin
+password: ye+~,5JHeSf6
+
+for DB
+Instance: WINPMCSVR
+IP: 110.34.191.78
+username: smsdb
+password: C-FY@a4h0tK
+
+Instance: WINPMCSVR
+DB name: sms_db
+
+
+
+email account: noreply@philsaga.com
+password: CSv*a9I3(Ne^
+Smtp host: 110.34.191.66
+
+website: https://vendor.philsaga.com
+https://cenphilsagacom.wsiph2.com:2083/
+username: v3ndorphilsag6
+password: Jpy@+Y4$v#9?
+
+https://cenphilsagacom2.wsiph2.com:2083/
+username: ph1lsagac0m
+password: 96s;Qg(;pM9E/bu'
+
+Official GitHub Account
+
+E-mail: wsiphproduction@gmail.com
+Password: bdd3v3l0pm3n72015
+
+URL: https://kmdcwsi.udemy.com
+Username: production@webfocus.ph
+Password: KMDC_pr0dT36mWS12021**
+
+jetbrains
+email: jatano@philsaga.com
+username: jundrietano
+password: @SbhJ2q&bb
+
+https://bsiphilippines.mimeo.digital/
+email: jatano@philsaga.com
+password: @SbhJ2q&bb
+
+sss
+PHPSQLCODER
+kQSbhJ2qbbeR
+
+envato themeforest
+driejun
+@SbhJ2q&bb
+
+ https://cenphilsagacom2.wsiph2.com:2083
+
+//pmc website
+https://cenphilsagacom.wsiph2.com:2083/
+username: ph1lsagac0m
+Password: cp!(zUx8Fgph7pj
+
+neQ^OaqWl$xZ
+
+gitlab
+username: phpsqlcoder
+password: github
+
+Wavecell
+https://app.wavecell.com/login
+Username: admin@webfocus.ph
+Password: WS1!w6v3c3ll!2021***
+
+
+388004327214
+select *
+Prod server MSSQL 
+DB: mssqlws1ph2_hris
+user: mssqlws1ph2_hris_sa
+password: ]Go-EKr^q&ex
+
+docker
+username: jundrie
+pword: K2(y?Y.ZyWcXa_6
+
+Charm Google Drive
+username: WebFocusDocumentations@gmail.com
+pword: Charm1234@
+
+You have successfully submitted your proof of account to SSS on August 3, 2021 9:26 AM.
+
+Please take note of your transaction number : BTMW7192021080387202.
+
+weebly
+jatano@philsaga.com
+P4x5Xmb2QXS8QQ#
+
+
+https://workspace.google.com/dashboard
+analytics@vanguard.edu.ph
+VX?c}mc?
+V5n6U@7D!
+
+MLSVRHRISVM\HRISDB
+SA
+hr1sMSSQL2016@Ph1ls@ga
+
+http://philsaga.bookbit.ph:5200/login
+julius.faigmani@gmail.com
+password
+http://philsaga.bookbit.ph:5300/
+
+Laracast
+jatano@philsaga.com
+P4x5Xmb2QXS8QQ#
+
+Advance amounts
+
+https://csat.cisecurity.org/
+P4x5Xmb2QXS8QQ#
+
+panabo qr code
+cedrick0923
+lordCedrick0923!
+
+lordcedrick0101
+lordCedrick0923!
+
+MLDBMSSQL2016\SOFPRO
+app_sofrohris
+kE#0cG/70@/\
+
+MLSOFTPROVM 
+username: appsvradmin
+password: "p=eEn2v
+
+
+zkteco
+jatano@philsaga.com
+P4x5Xmb2QXS8QQ#
+
+lto portal
+user: 21-850531-0685891
+password: mb-s
+
+apestano
+1Corinthians1347

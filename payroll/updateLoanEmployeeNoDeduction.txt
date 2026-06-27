@@ -1,0 +1,4 @@
+update loan_employee set posted='0' WHERE `loanId` IN (13,14,11,30)
+
+
+update loan_employee set posted='1' WHERE `loanId` IN (13,14,11,30)

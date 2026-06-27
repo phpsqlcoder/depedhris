@@ -1,0 +1,105 @@
+<?php
+ob_start();
+session_start();
+include("../../employeefunctions.php");
+include("../../dbcon.php");
+
+$cutoffDate = mysql_fetch_assoc(mysql_query("SELECT * FROM cutoffdates WHERE payrollDate='".$_POST['PayrollCutoff']	."'",$conn));
+
+
+
+$qry="SELECT k.*,e.firstName,e.lastName,e.middleName,p.name as position,d.name as dept,e.employmentStatus,e.employeeNo 
+from kiosk_request_logs l 
+left join kiosk_request k on k.ndex=l.request_id
+left join employee e on e.ndex=k.empid
+ left join position p on p.ndex=e.position left join dept d on d.ndex=e.deptId";
+
+$qry.=" WHERE l.action='Approve Request' and
+ (l.timelog >= '".$cutoffDate['cutoffDateStart']." 00:00:00' and l.timelog <= '".$cutoffDate['cutoffDateEnd']." 23:59:59') 
+ and k.date<'".$cutoffDate['cutoffDateStart']."'
+ and k.tayp='drd'";
+$qry.=" ORDER BY k.ndex desc";
+//echo $qry;
+$exec=mysql_query($qry);
+$var=0;
+while($xp=mysql_fetch_array($exec)){
+
+   	$created=mysql_fetch_array(mysql_query("select * from kiosk_request_logs where request_id='".$xp['ndex']."' and action='Create Request' order by ndex desc limit 1"));
+   	$approved_hr=mysql_fetch_array(mysql_query("select * from kiosk_request_logs where request_id='".$xp['ndex']."' and action='Approve Request (HR)' order by ndex desc limit 1"));
+   	$approved_dept=mysql_fetch_array(mysql_query("select * from kiosk_request_logs where request_id='".$xp['ndex']."' and action='Approve Request' order by ndex desc limit 1"));
+   	$dtr=mysql_fetch_array(mysql_query("select * from dailytimesummary where 
+   		employeeId='".$xp['empid']."' and date='".$xp['date']."'"));
+     $var++;
+     $ctr1s++;
+     if ($ctr1s==2){$bgclr1s='#ffffff';$ctr1s=0;} else { $bgclr1s='#F8F8AC';}
+     $exp = explode("|",$xp['request']);
+
+   	 $ot = 0;
+     $excess=0;
+     if($exp[1]>8){
+     	$ot = 8;
+     	$excess = $exp[1] - 8;
+     }
+     else{
+     	$ot = $exp[1];
+     }
+     $data.='<tr valign="top">
+     			<td>'.$var.'</td>
+     			<td>'.$created['timelog'].'</td>
+     			<td>'.$approved_dept['timelog'].'</td>
+     			<td>'.$approved_hr['timelog'].'</td>
+     			<td>'.getID($xp['employmentStatus'],$xp['employeeNo']).'</td>
+     			<td>'.$xp['lastName'].', '.$xp['firstName'].' '.$xp['middleName'].'</td>
+     			<td>'.$xp['dept'].'</td>	           
+	            <td>'.$xp['date'].'</td>           
+	            <td align="right">'.$exp[0].'</td>           
+	            <td align="right">'.$ot.'</td> 
+	            <td align="right">'.$dtr['otLHoliday'].'</td>
+	            <td align="right">'.$dtr['otSHoliday'].'</td>
+	            <td align="right">'.$exp[2].'</td>          
+	            <td align="right">'.$excess.'</td>
+	            <td>'.$xp['remarks'].'</td>
+				
+  			</tr>';
+}
+?>
+     <?php
+if($_POST['eksel']=='on'){
+		$filename ="drd_application.xls";
+				header('Content-type: application/ms-excel');
+				header('Content-Disposition: attachment; filename='.$filename);
+	}
+	?>
+     <?php include("../rptheader.php");?>
+     <table width="100%" style="font-family:Arial;font-size:12px;">
+	  <tr>
+	       <td colspan="14" align="center" style="font-size:14px;font-weight:bold;">Duty Restday Application<br> 
+	       	<?php echo date('F d, Y',strtotime($_POST['PayrollCutoff']));?>
+	       </td>
+	  </tr>
+	  <tr><td>&nbsp;</td></tr>
+	  <tr valign="top">
+	       <td>Seq</td>
+		   <td>Date Filed</td>
+		   <td>Approved (Dept)</td>
+		   <td>Approved (HR)</td>
+		   <td>ID</td>
+	       <td>Name</td>
+		   <td>Dept</td>
+	       <td>Date of Application</td>
+	       <td>DRD Hrs</td>
+	       <td>OT DRD</td>	       
+	       <td>DRD on LH</td>
+	       <td>DRD on SH</td>
+	       <td>Night Premium</td>
+	       <td>DRD Excess</td>
+	       <td width="300">Comments</td>
+	  </tr>
+	  <tr><td colspan="14"><hr></td></tr>
+	  <?php echo $data;?>
+      </table>
+	  <?php include("../rptfooter.php");?>
+
+
+
+

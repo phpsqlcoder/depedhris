@@ -1,0 +1,83 @@
+<?php
+ob_start();
+session_start();
+if(!$_SESSION['nym']){echo "".$_SESSION['firstName']." ".$_SESSION['lastName']." You are not allowed to access this page!<br> Your name has been recorded.<br><a href='kiosk/menu.php'>Back to kiosk</a>";die();}
+include("../dbcon.php");
+include("../scripts/scripts.php");
+include ("../myfunctions.php");
+$rs = mysql_query("SELECT * FROM cutoffdates ORDER BY payrollDate DESC limit 1",$conn);
+$cutOffDates = mysql_fetch_assoc($rs);
+
+if (empty($_POST['cutoffDate'])){
+	$_POST['cutoffDate'] = $cutOffDates['payrollDate'];
+}
+
+if ($_GET['pageact'] == "updatePayroll"){
+	//echo $_POST['numrows']."asdfkjsba";
+	
+	for($i=1;$i <= $_POST['numrows']; $i++){
+
+		//echo $_POST['rowNum'.$i]."<br>";
+
+		$updateCoopPayroll = mysql_query("UPDATE payroll SET d_coopTotal='".$_POST['dedCoop'.$i]."' WHERE ndex='".$_POST['rowNum'.$i]."' && pay_period='".$_POST['cutoffDate']."'",$conn);
+		
+	}
+} // end
+
+$sql = "SELECT p.*, e.lastName, e.firstName FROM payroll p 
+										  LEFT JOIN employee e ON e.ndex=p.empid LEFT JOIN dept d ON d.ndex = e.deptId
+										  WHERE e.isActive='1' && p.pay_period='".$_POST['cutoffDate']."' ORDER BY   e.lastName,d.name";
+$rs = mysql_query($sql,$conn);
+$countRes = mysql_num_rows($rs);
+$cnt = 	0;
+while ($dt = mysql_fetch_assoc($rs)){
+	$cnt++;
+	if (($cnt % 2) == 1){ $tr_bcg = '#FFFFFF'; } else { $tr_bcg = '#F8F8AC';}
+	$rowRes .= "<tr  style='background-color:".$tr_bcg.";margin:8px 8px;'><td style='padding:5px;'>".$dt['lastName'].", ".$dt['firstName']."</td><td><input type='hidden' name='rowNum".$cnt."' value='".$dt['ndex']."'><input type='text' name='dedCoop".$cnt."' value='".$dt['d_coopTotal']."'></td></tr>";
+}
+
+//-------------------------------------------------
+//-------------------------------------------------
+$rs = mysql_query("SELECT * FROM cutoffdates WHERE isLock='0' ORDER BY payrollDate DESC limit 2",$conn);
+while ($dt = mysql_fetch_assoc($rs)){
+	$optionSelectPayrollCutoffDate.= "<option value='".$dt['payrollDate']."'>".date('F d, Y',strtotime($dt['payrollDate']))."</option>";
+	if ($dt['payrollDate'] == $_POST['cutoffDate']){
+		$optionSelectPayrollCutoffDate_selected = "<option value='".$dt['payrollDate']."'>".date('F d, Y',strtotime($dt['payrollDate']))."</option>";
+	}
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- <title>HRIS - Davao Doctors Hospital</title> -->
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../css/facebox.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<?php include "header.php";?>
+	<div id="main_content_wrap" class="container_12">
+     <h2>Tools >> Coop Deduction</h2>   
+    <div class="clearfix"> 
+			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>?pageact=selectDate" margin="0px;" name="myForm">
+				<select name="cutoffDate"><?php echo $optionSelectPayrollCutoffDate_selected.$optionSelectPayrollCutoffDate;?></select>
+				<button>Go</button>
+			</form>
+			<?php if ($countRes != 0){?>
+			<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>?pageact=updatePayroll" margin="0px;" name="myForm">
+				<input type="hidden" name="numrows" value="<?php echo $cnt;?>">
+				<input type="hidden" name="cutoffDate" value="<?php echo $_POST['cutoffDate'];?>">
+				<table cellapdding="10" cellspacing="10" ">
+					<tr class="columnheader" bgcolor="000000"><td style="padding:10px;">NAME</td><td>COOP DEDUCTION</td></tr>
+					<?php echo $rowRes;?>
+				</table>
+				<button>Update</button>
+			</form>
+			<?php }?>
+    </div> 
+	<h2>&nbsp;</h2>
+	<?php include "footer.php";?>
+  </div>
+</body>
+</html>

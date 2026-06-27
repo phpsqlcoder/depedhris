@@ -1,0 +1,9 @@
+profile pics = tuesday
+popup box on Queries and complains
+all inputs should be logged in users
+reply should have counter
+
+iexpress - add attached file option
+remove HUMAN RESOURCE at the header
+change kiosk login page the same with HRIS
+change logo to new HD logo from email. 

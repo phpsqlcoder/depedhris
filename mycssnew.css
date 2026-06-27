@@ -1,0 +1,45 @@
+.main-container {
+	background-color: #4B0082;
+}
+
+.menu-container {
+	position: absolute;
+	top: 10px;
+	background-color: #FFD088;
+	width: 300px;
+	height: 350px;
+	float: none;
+	border: medium;
+	padding: 10px;
+	
+}
+
+.menu-container, table, select, button, option, input{
+	font-size: 11px;
+	color: #003E01;
+}
+.display-container {
+	position: absolute;
+	top: 125px;
+	left: 10px;
+	height: 400px;
+	width: 1000px;
+	font-size: 14px;
+	font-family: georgia, Arial, Helvetica, sans-serif;
+	border: 0px;
+	border-color: #E3FFC8;
+	border-style: ridge;	
+	vertical-align: top;
+	padding: 5px;
+	background: url(images/detailbg.png);
+}
+.display-container table{
+	font-size: 12px;
+	color: #003E01;
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+}
+
+.dateLevel {
+	font-size: 14px;
+	color: #ffffff;
+}

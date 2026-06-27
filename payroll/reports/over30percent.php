@@ -1,0 +1,26 @@
+<?php
+ob_start();
+session_start();
+include("../../dbcon.php");
+
+$rs = mysql_query("SELECT * FROM cutoffdates ORDER BY payrollDate DESC",$conn);
+while ($dt = mysql_fetch_assoc($rs)){
+	$optionSelectPayrollCutoffDate.= "<option value='".$dt['payrollDate']."'>".date('F d, Y',strtotime($dt['payrollDate']))."</option>";
+}
+
+?>
+     <h2>Less than 30% Netpay </h2>
+     <form name="frmrpt" action="reports/output/over30percent.php" method="post" target="foo" onsubmit="window.open('', 'foo', 'width=1000,height=600,status=yes,resizable=yes,scrollbars=yes');">
+     <table width="80%">
+	  <tr>
+		  <td>Payroll Period <select name="PayrollCutoff"><?php echo $optionSelectPayrollCutoffDate;?></select> &nbsp;
+		
+	  <td><input type="submit" value="Submit"></td>
+	  </tr>
+      </table>	
+	<h2>&nbsp;</h2>
+     </form>
+
+
+
+

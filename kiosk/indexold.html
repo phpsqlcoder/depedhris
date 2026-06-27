@@ -1,0 +1,443 @@
+<?php
+ob_start();
+$conn=mysql_connect("localhost","root","root");
+mysql_select_db("hris",$conn);
+if(isset($_GET['sendmail'])){
+
+
+  if($_POST['emailmsg']){
+    $insertq=mysql_query("INSERT INTO inquiries(`msg`, `sender`, `recipient`, `sent`, `sender_ip`, `category`)
+    VALUES('".$_POST['emailmsg']."','".$_POST['sendername']."','".$_POST['sendto']."','".date('Y-m-d h:i:s')."','".$_SERVER['REMOTE_ADDR']."','".$_POST['esubject']."')");
+    header('location:index.php');
+  }
+  
+}
+
+        
+?>
+<!DOCTYPE html>
+
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+  <meta charset="utf-8">
+  <title>E-VOICE</title>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  
+  <!-- Global styles START -->          
+  <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Global styles END --> 
+   
+  <!-- Page level plugin styles START -->
+  <link href="assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+  <link href="assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.css" rel="stylesheet">
+  <link href="assets/global/plugins/slider-revolution-slider/rs-plugin/css/settings.css" rel="stylesheet">
+  <!-- Page level plugin styles END -->
+
+  <!-- Theme styles START -->
+  <link href="assets/global/css/components.css" rel="stylesheet">
+  <link href="assets/frontend/layout/css/style.css" rel="stylesheet">
+  <link href="assets/frontend/pages/css/style-revolution-slider.css" rel="stylesheet"><!-- metronic revo slider styles -->
+  <link href="assets/frontend/layout/css/style-responsive.css" rel="stylesheet">
+  <link href="assets/frontend/layout/css/themes/red.css" rel="stylesheet" id="style-color">
+  <link href="assets/frontend/layout/css/custom.css" rel="stylesheet">
+  <!-- Theme styles END -->
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="corporate">
+ 
+
+    <!-- BEGIN TOP BAR -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-phone"></i><span>221-2101  loc. 414</span></li>
+                      
+                    </ul>
+                </div>
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    <ul class="list-unstyled list-inline pull-right">
+                        <li><a href="login.php"><h3><span class="fa fa-lock"></span>Log In</h3></a></li>
+                      
+                    </ul>
+                </div>
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>        
+    </div>
+    <!-- END TOP BAR -->
+    <!-- BEGIN HEADER -->
+    <div class="header">
+      <div class="container">
+        <a class="site-logo" href="index.html"><img src="../images/logo.jpg" alt="DDH" height="90"></a>
+    <div class="header-navigation pull-right font-transform-inherit choose-us-block content text-center"></BR></BR>
+     <h2><strong>WELCOME TO E-VOICE</strong></h2>
+       <h4>HUMAN RESOURCE DEPARTMENT</h4>
+       </div>
+      </div>
+    </div>
+    <!-- Header END -->
+
+    <!-- BEGIN SLIDER -->
+    <div class="page-slider margin-bottom-40" >
+      <div class="fullwidthbanner-container revolution-slider">
+        <div class="fullwidthabnner">
+          <ul id="revolutionul"> 
+      
+      <?php 
+        $q="SELECT * FROM `slides` WHERE `isdeleted`=0";
+          $sl=mysql_query($q);
+          while($r=mysql_fetch_array($sl)){
+      ?>
+            <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="http://192.168.7.21/hris/kiosk/assets/slides/<?php echo $r['fyl'];?>">
+              <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
+              <img src="../../assets/frontend/pages/img/revolutionslider/bg1.jpg" alt="">
+                            
+              <div class="caption lft slide_title slide_item_left"
+                data-x="30"
+                data-y="105"
+                data-speed="400"
+                data-start="1500"
+                data-easing="easeOutExpo">
+                <?php echo $r['txt1'];?> 
+              </div>
+              <div class="caption lft slide_subtitle slide_item_left"
+                data-x="30"
+                data-y="180"
+                data-speed="400"
+                data-start="2000"
+                data-easing="easeOutExpo">
+                <?php echo $r['txt2'];?> 
+              </div>
+              <div class="caption lft slide_desc slide_item_left"
+                data-x="30"
+                data-y="220"
+                data-speed="400"
+                data-start="2500"
+                data-easing="easeOutExpo">
+                <?php echo $r['txt3'];?> 
+              </div>
+              <a target="_blank" class="caption lft btn green slide_btn slide_item_left" href="http://192.168.7.21/hris/kiosk/assets/slides/<?php echo $r['fyl'];?>"
+                data-x="30"
+                data-y="290"
+                data-speed="400"
+                data-start="3000"
+                data-easing="easeOutExpo">
+                <?php echo $r['txt4'];?> 
+              </a>                        
+              <div class="caption lfb"
+                data-x="640" 
+                data-y="55" 
+                data-speed="700" 
+                data-start="1000" 
+                data-easing="easeOutExpo">
+                <img src="http://192.168.7.21/hris/kiosk/assets/slides/<?php echo $r['fyl'];?>" alt="Image 1">
+              </div>
+            </li>
+      <?php } ?>
+
+            
+            </ul>
+            <div class="tp-bannertimer tp-bottom"></div>
+        </div>
+    </div>
+</div>
+    <!-- END SLIDER -->
+
+    <div class="main">
+      <div class="container">
+       
+
+        <!-- BEGIN BLOCKQUOTE BLOCK -->   
+        <div class="row quote-v1 margin-bottom-30">
+          <div class="col-md-9">
+            <span>Place your inquiry under the correct category</span>
+          </div>
+          <div class="col-md-3 text-right">
+            <a class="btn-transparent" href="#"><i class="fa fa-rocket margin-right-10"></i>Inquiry Form</a>
+          </div>
+        </div>
+        <!-- END BLOCKQUOTE BLOCK -->
+
+      
+
+        <!-- BEGIN TABS AND TESTIMONIALS -->
+        <div class="row mix-block margin-bottom-40">
+          <!-- TABS -->
+          <div class="col-md-11 tab-style-1">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab-1" data-toggle="tab">Compensation & Benefits</a></li>
+              <li><a href="#tab-2" data-toggle="tab">Recruitment & Staffing</a></li>
+              <li><a href="#tab-3" data-toggle="tab">Training & Development</a></li>
+              <li><a href="#tab-4" data-toggle="tab">Employee Welfare</a></li>
+        <li><a href="#tab-5" data-toggle="tab">Industrial Relations</a></li>
+        <li><a href="#tab-6" data-toggle="tab">Others</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane row fade in active" id="tab-1">
+               <form method="post" action="index.php?sendmail=on">
+                <div class="form-body col-md-6">                
+                <input type="hidden" name="sendto" value="mbbenigno@ddh.com.ph,jbpelicano@ddh.com.ph,ibdumuk@ddh.com.ph"> 
+        <input type="hidden" name="esubject" value="COMPENSATION & BENEFITS">    
+                  <div class="form-group">                                    
+                      <input type="text" name="sendername" class="form-control input-sm" placeholder="Enter your name here (Optional)">               
+                  </div>
+                 <div class="form-group">
+                    <label>Inquiry:</label>
+                    <textarea class="form-control" rows="3" name="emailmsg"></textarea>
+                  </div>
+           <div class="form-actions">
+                  
+                  <input type="submit" value="Send" class="btn green">
+                  <input type="reset" value="Cancel" class="btn default">
+                  
+                </div>
+                </div>               
+              </form>
+              </div>
+        
+              <div class="tab-pane row fade" id="tab-2">
+                 <form method="post" action="index.php?sendmail=on">
+                <div class="form-body col-md-6">                
+                <input type="hidden" name="sendto" value="bdplaza@ddh.com.ph,mdpareja@ddh.com.ph"> 
+        <input type="hidden" name="esubject" value="RECRUITMENT & STAFFING">    
+                  <div class="form-group">                                    
+                      <input type="text" name="sendername" class="form-control input-sm" placeholder="Enter your name here (Optional)">               
+                  </div>
+                 <div class="form-group">
+                    <label>Inquiry:</label>
+                    <textarea class="form-control" rows="3" name="emailmsg"></textarea>
+                  </div>
+           <div class="form-actions">
+                  
+                  <input type="submit" value="Send" class="btn green">
+                  <input type="reset" value="Cancel" class="btn default">
+                  
+                </div>
+                </div>               
+              </form>
+              </div>
+        
+        
+        <div class="tab-pane row fade" id="tab-3">
+                <form method="post" action="index.php?sendmail=on">
+                <div class="form-body col-md-6">                
+                <input type="hidden" name="sendto" value="ruadlawan@ddh.com.ph"> 
+        <input type="hidden" name="esubject" value="TRAINING & DEVELOPMENT">    
+                  <div class="form-group">                                    
+                      <input type="text" name="sendername" class="form-control input-sm" placeholder="Enter your name here (Optional)">               
+                  </div>
+                 <div class="form-group">
+                    <label>Inquiry:</label>
+                    <textarea class="form-control" rows="3" name="emailmsg"></textarea>
+                  </div>
+           <div class="form-actions">
+                  
+                  <input type="submit" value="Send" class="btn green">
+                  <input type="reset" value="Cancel" class="btn default">
+                  
+                </div>
+                </div>               
+              </form>
+              </div>
+        
+        
+        <div class="tab-pane row fade" id="tab-4">
+                 <form method="post" action="index.php?sendmail=on">
+                <div class="form-body col-md-6">                
+                <input type="hidden" name="sendto" value="gftillo@ddh.com.ph"> 
+        <input type="hidden" name="esubject" value="EMPLOYEE WELFARE">    
+                  <div class="form-group">                                    
+                      <input type="text" name="sendername" class="form-control input-sm" placeholder="Enter your name here (Optional)">               
+                  </div>
+                 <div class="form-group">
+                    <label>Inquiry:</label>
+                    <textarea class="form-control" rows="3" name="emailmsg"></textarea>
+                  </div>
+           <div class="form-actions">
+                  
+                  <input type="submit" value="Send" class="btn green">
+                  <input type="reset" value="Cancel" class="btn default">
+                  
+                </div>
+                </div>               
+              </form>
+              </div>
+        
+        <div class="tab-pane row fade" id="tab-5">
+                <form method="post" action="index.php?sendmail=on">
+                <div class="form-body col-md-6">                
+                <input type="hidden" name="sendto" value="dvbetonio@ddh.com.ph"> 
+        <input type="hidden" name="esubject" value="INDUSTRIAL RELATION">    
+                  <div class="form-group">                                    
+                      <input type="text" name="sendername" class="form-control input-sm" placeholder="Enter your name here (Optional)">               
+                  </div>
+                 <div class="form-group">
+                    <label>Inquiry:</label>
+                    <textarea class="form-control" rows="3" name="emailmsg"></textarea>
+                  </div>
+           <div class="form-actions">
+                  
+                  <input type="submit" value="Send" class="btn green">
+                  <input type="reset" value="Cancel" class="btn default">
+                  
+                </div>
+                </div>               
+              </form>
+              </div>
+        
+        <div class="tab-pane row fade" id="tab-6">
+                <form method="post" action="index.php?sendmail=on">
+                <div class="form-body col-md-6">                
+                <input type="hidden" name="sendto" value="hrd@ddh.com.ph,mbtiu@ddh.com.ph,avlucenda@ddh.com.ph,mtmanligoy@ddh.com.ph"> 
+        <input type="hidden" name="esubject" value="OTHERS">    
+                  <div class="form-group">                                    
+                      <input type="text" name="sendername" class="form-control input-sm" placeholder="Enter your name here (Optional)">               
+                  </div>
+                 <div class="form-group">
+                    <label>Inquiry:</label>
+                    <textarea class="form-control" rows="3" name="emailmsg"></textarea>
+                  </div>
+           <div class="form-actions">
+                  
+                  <input type="submit" value="Send" class="btn green">
+                  <input type="reset" value="Cancel" class="btn default">
+                  
+                </div>
+                </div>               
+              </form>
+              </div>
+        
+      
+            </div>
+          </div>
+          <!-- END TABS -->
+        
+        </div>                
+        <!-- END TABS AND TESTIMONIALS -->
+
+        
+
+        <!-- BEGIN CLIENTS -->
+        <div class="row margin-bottom-40 our-clients">
+          <div class="col-md-3">
+            <h2><a href="#">HRD Forms</a></h2>
+            <p>Click each button to download</p>
+          </div>
+          <div class="col-md-9">
+            <div class="owl-carousel owl-carousel6-brands">
+              <div class="client-item">
+                <a href="attachments/HRD-SF-015  Request for overtime 09-24-08.doc">
+                  <button type="button" class="btn blue-hoki" style="width:150px;text-align:center;">OverTime</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/HRD-SF-008  Change day off  work schedule  off set.doc">
+                  <button type="button" class="btn blue-madison" style="width:150px;text-align:center;">Change Schedule</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/HRD-SF-022  Failure to punch-in out form rv. 1 10-06-06.DOC">
+                 <button type="button" class="btn yellow-crusta" style="width:150px;text-align:center;">Failure to punch</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/HRD-SF-013 Leave Notification Form, r.1 10-04-06.xls">
+                 <button type="button" class="btn red-sunglo" style="width:150px;text-align:center;">Leave Notification</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/prescription.docx">
+                  <button type="button" class="btn yellow-crusta" style="width:150px;text-align:center;">Prescription</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/HRD-SF-056 Acknowledgment of Verbal Reprimand.doc">
+                  <button type="button" class="btn purple-plum" style="width:150px;text-align:center;">AVR</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/HRD-SF-060  On-call duty form.doc">
+                  <button type="button" class="btn grey-cascade" style="width:150px;text-align:center;">On-call duty form</button>
+                </a>
+              </div>
+              <div class="client-item">
+                <a href="attachments/HRD-SF-005  Personnel requisition.doc">
+                  <button type="button" class="btn red" style="width:180px;text-align:center;">Personnel Requisition</button>
+                </a>
+              </div>     
+            </div>
+          </div>          
+        </div>
+        <!-- END CLIENTS -->
+      </div>
+    </div>
+
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+            HRIS. ALL Rights Reserved. 
+          </div>
+          <!-- END COPYRIGHT -->
+         
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->
+
+    <!-- Load javascripts at bottom, this will reduce page load time -->
+    <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+    <!--[if lt IE 9]>
+    <script src="assets/global/plugins/respond.min.js"></script>
+    <![endif]--> 
+    <script src="assets/global/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
+    <script src="assets/frontend/layout/scripts/back-to-top.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+    <script src="assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="assets/global/plugins/carousel-owl-carousel/owl-carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
+
+    <!-- BEGIN RevolutionSlider -->
+  
+    <script src="assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.plugins.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script> 
+    <script src="assets/frontend/pages/scripts/revo-slider-init.js" type="text/javascript"></script>
+    <!-- END RevolutionSlider -->
+
+    <script src="assets/frontend/layout/scripts/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.init();    
+            Layout.initOWL();
+            RevosliderInit.initRevoSlider();
+            Layout.initTwitter();
+            //Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
+            //Layout.initNavScrolling(); 
+        });
+    </script>
+    <!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS `ar_hospital_ee_refund_ledger` (
+  `ndex` int(11) NOT NULL AUTO_INCREMENT,
+  `ar_hospital_ee_trx_Id` int(11) NOT NULL,
+  `Batch_No` varchar(50) NOT NULL,
+  `AR_No` varchar(50) NOT NULL,
+  `employeeId` int(11) NOT NULL,
+  `paymentDate` date NOT NULL,
+  `amountPaid` double(11,2) NOT NULL,
+  `lineBalance` double(11,2) NOT NULL,
+  `paymentType` varchar(255) NOT NULL COMMENT 'Payroll/Adjustment',
+  `remarks` text NOT NULL,
+  `isUploaded` enum('Y','N') NOT NULL DEFAULT 'N',
+  `or_number` varchar(100) DEFAULT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'POSTED',
+  `cancelled_by` varchar(100) DEFAULT NULL,
+  `cancelled_date` datetime DEFAULT NULL,
+  `payment_type` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ndex`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
